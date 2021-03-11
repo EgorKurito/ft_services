@@ -5,9 +5,9 @@ RUN apk add nginx supervisor wget \
 		php7 php7-fpm php7-opcache php7-json \
 		php7-gd php7-mysqli php7-zlib php7-curl
 
-COPY ./src/default.conf /etc/nginx/conf.d/default.conf
-COPY ./src/supervisor.conf /etc/supervisord.conf
-COPY ./src/setup.sh ./
+COPY ./srcs/default.conf /etc/nginx/conf.d/default.conf
+COPY ./srcs/supervisor.conf /etc/supervisord.conf
+COPY ./srcs/setup.sh ./
 
 RUN wget https://wordpress.org/latest.tar.gz \
 	&& tar -xf latest.tar.gz && \
