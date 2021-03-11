@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: nginx
-    spec:
+    spec: # pods
       containers:
       - name: nginx
         image: nginx_image
@@ -29,6 +29,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nginx-service
+  annotations:
+    metallb.universe.tf/allow-shared-ip: shared
   labels:
     app: nginx
 spec:
@@ -48,4 +50,3 @@ spec:
     name: ssh
     targetPort: 22
     protocol: TCP
-  loadBalancerIP: 192.168.99.150
