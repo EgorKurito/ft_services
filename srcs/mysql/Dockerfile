@@ -5,6 +5,7 @@ RUN		apk update && apk upgrade ; \
     	openrc mariadb mariadb-common mariadb-client \
     	telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 
+COPY 	./telegraf.conf /etc/telegraf/
 RUN 	mkdir -p /run/mysqld/
 COPY 	./supervisor.conf /etc/supervisord.conf
 COPY 	./wordpress.sql /

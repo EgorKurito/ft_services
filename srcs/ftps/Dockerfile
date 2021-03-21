@@ -1,7 +1,8 @@
 FROM 	alpine:3.12
 
 RUN		apk update && apk upgrade ; \
-		apk add sudo vsftpd openrc vim openssl supervisor
+		apk add sudo vsftpd openrc vim openssl supervisor \
+		telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 
 RUN 	adduser -D user && echo "user:pass" | chpasswd
 
@@ -11,6 +12,8 @@ RUN 	openssl req -x509 -nodes -days 10 -subj "/C=RU/ST=Kazan/L=Kazan/O=21/OU=21S
 RUN 	mkdir -p home/user/
 RUN 	sudo chmod -R 755 home/user/
 RUN 	sudo chmod -R 755 /etc/ssl/private/pure-ftpd.pem
+
+COPY 	./telegraf.conf /etc/telegraf/
 COPY 	./supervisor.conf /etc/supervisord.conf
 COPY 	./vsftpd.conf /etc/vsftpd/vsftpd.conf
 COPY 	./start.sh	/
