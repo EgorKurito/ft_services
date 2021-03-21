@@ -1,12 +1,12 @@
 FROM 	alpine:3.12
 
-RUN		apk update && apk upgrade ; \
- 		apk add sudo vim mysql mysql-client supervisor \
+RUN		apk update && apk upgrade
+RUN		apk add sudo vim mysql mysql-client supervisor \
     	openrc mariadb mariadb-common mariadb-client \
     	telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 
-COPY 	./telegraf.conf /etc/telegraf/
 RUN 	mkdir -p /run/mysqld/
+COPY 	./telegraf.conf /etc/telegraf/
 COPY 	./supervisor.conf /etc/supervisord.conf
 COPY 	./wordpress.sql /
 COPY 	./my.cnf /etc/

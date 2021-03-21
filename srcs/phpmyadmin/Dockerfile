@@ -16,7 +16,7 @@ COPY 	./telegraf.conf /etc/telegraf/
 COPY 	./supervisor.conf /etc/supervisord.conf
 COPY 	./config.inc.php /www/phpmyadmin/
 RUN 	rm /etc/nginx/conf.d/default.conf
-COPY 	./default.conf /etc/nginx/conf.d/default.conf
+COPY 	./nginx.conf /etc/nginx/conf.d/default.conf
 RUN 	mkdir -p /run/nginx
 RUN 	mkdir -p /var/run/php
 COPY 	./start.sh	/

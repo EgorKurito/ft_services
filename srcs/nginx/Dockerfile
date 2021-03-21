@@ -1,14 +1,14 @@
 FROM	alpine:3.12
 
-RUN		apk update && apk upgrade ; \
-		apk add nginx openssl openssh supervisor \
+RUN		apk update && apk upgrade
+RUN		apk add nginx openssl openssh supervisor \
 		telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 
-COPY 	./telegraf.conf /etc/telegraf/
 RUN 	rm /etc/nginx/conf.d/default.conf
-COPY	./default.conf /etc/nginx/conf.d/default.conf
+COPY 	./nginx.conf /etc/nginx/conf.d/default.conf
 COPY 	./supervisor.conf /etc/supervisord.conf
-COPY 	./index.html /var/www/index.html
+COPY 	./telegraf.conf /etc/telegraf/
+COPY 	./index.html /www/index.html
 
 RUN 	ssh-keygen -A && adduser -D user && echo "user:pass" | chpasswd
 

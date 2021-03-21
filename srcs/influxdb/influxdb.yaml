@@ -27,7 +27,7 @@ spec:
       storage: 1Gi
 
 ---
-    
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -60,4 +60,4 @@ spec:
             - name: influxdb-volume
               mountPath: /var/lib/influxdb
             - name: dockersock
-              mountPath: /var/run/
+              mountPath: /var/run/docker.sock

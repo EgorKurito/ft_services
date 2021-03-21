@@ -1,7 +1,7 @@
 FROM 	alpine:3.12
 
-RUN		apk update && apk upgrade ; \
-		apk add sudo vsftpd openrc vim openssl supervisor \
+RUN		apk update && apk upgrade
+RUN		apk add sudo vsftpd openrc vim openssl supervisor \
 		telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 
 RUN 	adduser -D user && echo "user:pass" | chpasswd

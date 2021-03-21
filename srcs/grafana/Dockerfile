@@ -1,7 +1,7 @@
 FROM 	alpine:3.12
 
-RUN		apk update && apk upgrade ; \
-		apk add sudo openrc vim wget supervisor \
+RUN		apk update && apk upgrade
+RUN		apk add sudo openrc vim wget supervisor \
 		telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 
 RUN 	wget https://dl.grafana.com/oss/release/grafana-7.4.0.linux-amd64.tar.gz
