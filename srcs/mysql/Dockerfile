@@ -8,7 +8,6 @@ RUN		apk add sudo vim mysql mysql-client supervisor \
 RUN 	mkdir -p /run/mysqld/
 COPY 	./telegraf.conf /etc/telegraf/
 COPY 	./supervisor.conf /etc/supervisord.conf
-COPY 	./wordpress.sql /
 COPY 	./my.cnf /etc/
 COPY 	./start.sh /tmp/
 RUN 	sudo chmod -R 755 /var/lib/mysql/
